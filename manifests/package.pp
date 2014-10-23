@@ -1,13 +1,5 @@
 class katello_client::package {
 
-  Exec {
-    path           => [ '/bin', '/usr/bin', '/usr/local/bin' ],
-    cwd            => '/',
-    tries          => 3,
-    try_sleep      => 10
-  }
-
-
  ####Package Management#####
   if $katello_agent == true {
   
