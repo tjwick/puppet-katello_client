@@ -1,6 +1,6 @@
 # PUPPET-KATELLO_CLIENT
 
-This module provides configuration and management of the katello client and leverages the custom type of jlaska/puppet-subscription_manager to handle registration and consumption of  katello subscriptions using subscription-manager. 
+This module provides configuration and management of the katello client and leverages the custom type of jlaska/puppet-subscription_manager to handle registration and consumption of katello content subscriptions. 
 
 ## License
 
