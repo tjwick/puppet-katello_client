@@ -64,15 +64,22 @@ class katello_client ($version          = latest,
                       $password         = undef,
                       $manage_repo      = true,
                       ){
-
   validate_bool($agent_install,)
   validate_bool($manage_repo,)
-  validate_hostname($katello_host,)
+  validate_string($katello_host,)
   validate_string($content_org)
   validate_string($environment)
-  validate_re($version, ['^latest$', '^present$', '^[\d\.\-]+$'], "Invalid package version for katello-agent: ${version}")
-  validate_re($subman_version, ['^latest$', '^present$', '^[\d\.\-]+$'], "Invalid package version for subscription-manager: ${version}")
-  if $activationkey{validate_multi($activationkey,)}
+  validate_re($version, ['^latest$', '^[\d\.\-]+$'],"Invalid package version for katello-agent: ${version}")
+  validate_re($subman_version, ['^latest$', '^[\d\.\-]+$'], "Invalid package version for subscription-manager: ${version}")
+  if $activationkey{validate_array($activationkey,)}
   if $username{validate_string($username,)}
   if $password{validate_string($password,)}  
+  
+  anchor {'katello_client::begin':} ->
+  class{'katello_client::repo':} ->
+  class{'katello_client::package':} ->
+  class{'katello_client::subscription':} ->
+  anchor {'katello_client::end':}
+
 }
+
