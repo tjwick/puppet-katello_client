@@ -14,7 +14,7 @@ Read Licence file for more information.
 * Ian Henry (Craft___)
 
 
-### rhsm_register Parameters
+### katello_client Parameters
 - **version**: Version of katello agent to install.
 - **subman_version**: Version of subscription-manager to install.
 - **katello_host**: FQDN of the katello host to subscribe to.
