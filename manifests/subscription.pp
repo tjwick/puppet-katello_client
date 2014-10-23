@@ -2,15 +2,17 @@ class katello_client::subscription {
 
 ## Bootstrap to the katello host for providing appropriate SSL keys Case statement for adding multiple os support later##
 
-  case $::osfamily {
+  $bootstrap = 'katello-ca-consumer-latest.local-1.0-1.noarch.rpm'
 
-    'RedHat','Linux'{
-      package {'bootstrap':
-        ensure          => present,
-        source          => "http://${katello_client::katello_host}/pub/katello-ca-consumer-latest.noarch.rpm",
+  case $::osfamily {
+    'RedHat','Linux':{
+      exec {'bootstrap':
+        command         => "/bin/rpm -Uvh http://${katello_client::katello_host}/pub/katello-ca-consumer-latest.noarch.rpm",
+        creates         => '/etc/rhsm/ca/katello-server-ca.pem',
         require         => Yumrepo['sub-manager'],
+        before          => Rhsm_register['katello'],
       }
-  }
+
   if $katello_client::activationkey {
 
     rhsm_register { 'katello':
@@ -19,8 +21,7 @@ class katello_client::subscription {
       org             => $katello_client::content_org,
       environment     => $katello_client::environment,
       activationkeys  => [$katello_client::activationkey],
-      require         => Package['bootstrap'],
-    }   
+    }
   } else {
     rhsm_register {'katello':
       ensure          => present,
@@ -29,7 +30,9 @@ class katello_client::subscription {
       environment     => $katello_client::environment,
       username        => $katello_client::username,
       password        => $katello_client::password,
-      require         => Package['bootstrap'],
     }
-  } 
+  }
 }
+}
+}
+
