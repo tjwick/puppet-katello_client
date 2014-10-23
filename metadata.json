@@ -1,0 +1,22 @@
+{
+  "name": "Craft-katello_client",
+  "version": "0.0.1",
+  "author": "Ian Henry",
+  "summary": "Module for managing katello content subscriptions.",
+  "license": "GNU GPLv2",
+  "source": "https://github.com/Craft---/puppet-katello_client",
+  "project_page": "https://github.com/Craft---/puppet-katello_client",
+  "issues_url": "https://github.com/Craft---/puppet-katello_client",
+  "dependencies": [
+    {
+      "name": "jlaska/puppet-subscription_manager",
+      "version_requirement": "\u003e\u003d 0.0.1"
+    }
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": "\u003e\u003d 2.2.1"
+    }
+  ], 
+  "version": "0.0.1",
+}
+
