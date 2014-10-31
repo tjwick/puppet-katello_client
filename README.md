@@ -25,6 +25,7 @@ Read Licence file for more information.
 - **username**: Username to use with conten subscription in the case of not leveraging activation keys.
 - **password**: Password to use with content subscription in the case of not using activation keys.
 - **manage_repo**: Bool of whether to include management of the katello-pulp repo
+- **ensure**: Absent, present, to allow for subscribe/unsubscribe
 
 ### katello_client Examples
 
