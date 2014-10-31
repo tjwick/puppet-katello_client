@@ -63,6 +63,7 @@ class katello_client ($version          = latest,
                       $username         = undef,
                       $password         = undef,
                       $manage_repo      = true,
+                      $ensure           = present,
                       ){
   validate_bool($agent_install,)
   validate_bool($manage_repo,)
@@ -70,6 +71,7 @@ class katello_client ($version          = latest,
   validate_string($content_org)
   validate_string($environment)
   validate_re($version, ['^latest$', '^[\d\.\-]+$'],"Invalid package version for katello-agent: ${version}")
+  validate_re($ensure, ['^present$', '^absent$'],"Invalid subscription state: ${ensure}. Please provide absent or present")
   validate_re($subman_version, ['^latest$', '^[\d\.\-]+$'], "Invalid package version for subscription-manager: ${version}")
   if $activationkey{validate_array($activationkey,)}
   if $username{validate_string($username,)}

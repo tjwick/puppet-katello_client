@@ -1,6 +1,7 @@
 # PUPPET-KATELLO_CLIENT
 
-This module provides configuration and management of the katello client and leverages the custom type of jlaska/puppet-subscription_manager to handle registration and consumption of katello content subscriptions. 
+This module provides configuration and management of registration and consumption of katello content subscriptions.
+It borrows heavily from jlaska's custom rhsm provider type.
 
 ## License
 
@@ -8,7 +9,6 @@ Read Licence file for more information.
 
 ## Requirements
 * puppet-boolean [on GitHub](https://github.com/adrienthebo/puppet-boolean)
-* puppet-subscription_manager [on GitHub](https://github.com/jlaska/puppet-subscription_manager)
 
 ## Authors
 * Ian Henry (Craft___)

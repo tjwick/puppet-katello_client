@@ -15,16 +15,16 @@ class katello_client::subscription {
 
   if $katello_client::activationkey {
 
-    rhsm_register { 'katello':
-      ensure          => present,
+    katello_register { 'katello':
+      ensure          => $katello_client::ensure,
       server_hostname => $katello_client::katello_host,
       org             => $katello_client::content_org,
       environment     => $katello_client::environment,
       activationkeys  => [$katello_client::activationkey],
     }
   } else {
-    rhsm_register {'katello':
-      ensure          => present,
+    katello_register {'katello':
+      ensure          => $katello_client::ensure,
       server_hostname => $katello_client::katello_host,
       org             => $katello_client::content_org,
       environment     => $katello_client::environment,
