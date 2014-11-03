@@ -69,10 +69,6 @@ Puppet::Type.type(:katello_register).provide(:subscription_manager) do
   def exists?
     Puppet.debug("Verifying that the client is not already registered")
     if File.exists?("/etc/pki/consumer/cert.pem") or File.exists?("/etc/pki/consumer/key.pem")
-      if @resource[:force] == true
-        unregister
-        register
-      end
       return true
     else
       return false
