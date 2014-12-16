@@ -1,6 +1,6 @@
 {
   "name": "Craft-katello_client",
-  "version": "0.0.2",
+  "version": "0.1.2",
   "author": "Ian Henry",
   "summary": "Module for managing katello content subscriptions.",
   "license": "GNU GPLv2",
