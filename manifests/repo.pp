@@ -13,7 +13,7 @@ class katello_client::repo {
     if $katello_client::manage_repo and $katello_client::agent_install {
       yumrepo { 'katello-pulp':
         descr       => 'Pulp Community Releases',
-        baseurl     => "http://fedorapeople.org/groups/katello/releases/yum/2.0/pulp/RHEL/${::operatingsystemmajrelease}Server/${::architecture}/",
+        baseurl     => "http://fedorapeople.org/groups/katello/releases/yum/2.0/katello/RHEL/${::operatingsystemmajrelease}Server/${::architecture}/",
         enabled     => 1,
         gpgkey      => 'http://www.katello.org/gpg/RPM-GPG-KEY-katello-2012.gpg',
         gpgcheck    => 1,
