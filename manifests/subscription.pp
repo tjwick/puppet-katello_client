@@ -31,4 +31,3 @@ class katello_client::subscription {
     }
   }
 }
-

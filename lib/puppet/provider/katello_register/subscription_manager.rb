@@ -11,7 +11,7 @@ Puppet::Type.type(:katello_register).provide(:subscription_manager) do
   def config_parameters
     params = []
     params << "config"
-    params << "--server.hostname" << @resource[:katello_hostname] if ! @resource[:katello_hostname].nil?
+    params << "--server.hostname" << @resource[:katello_host] if ! @resource[:katello_host].nil?
     params << "--rhsm.repo_ca_cert" << @resource[:katello_cert] if ! @resource[:katello_cert].nil?
 
     return params
