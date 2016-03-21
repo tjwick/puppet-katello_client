@@ -1,6 +1,6 @@
 class katello_client::subscription {
   ## Bootstrap to the katello host for providing appropriate SSL keys Case statement for adding multiple os support later##
-
+ if $katello_client::subman_install {
   case $::osfamily {
     'RedHat', 'Linux' : {
       exec { 'bootstrap':
@@ -29,5 +29,6 @@ class katello_client::subscription {
         }
       }
     }
+  }
   }
 }
