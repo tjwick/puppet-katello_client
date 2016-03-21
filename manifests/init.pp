@@ -38,6 +38,11 @@
 #   Default: true
 #   Valid values: true, false
 #
+# [*subman_install*]
+#   Boolean. Bool of whether not to install the subscription-manager package.
+#   Default: true
+#   Valid values: true, false
+#
 # [*username*]
 #   String. Username to use with content subscription in the case of not using activation keys.
 #   Default: undef
@@ -60,12 +65,14 @@ class katello_client ($version          = latest,
                       $environment      = undef,
                       $activationkey    = [],
                       $agent_install    = true,
+                      $subman_install   = true,
                       $username         = undef,
                       $password         = undef,
                       $manage_repo      = true,
                       $ensure           = present,
                       ){
   validate_bool($agent_install,)
+  validate_bool($subman_install,)
   validate_bool($manage_repo,)
   validate_string($katello_host,)
   validate_string($content_org)
