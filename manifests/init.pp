@@ -57,6 +57,7 @@
 #   Boolean. Bool whether or not to include and manage the katello-pulp repo.
 #   Default: true
 #   Valid values: true, false
+#
 # [*$cacert*]
 #   The (optional) SSL CA certificate used to validate the server certificate.
 #   Default: '/etc/rhsm/ca/candlepin-local.pem'
@@ -96,9 +97,8 @@ class katello_client ($version          = latest,
   anchor {'katello_client::begin':} ->
   class{'katello_client::repo':} ->
   class{'katello_client::package':} ->
-  class{'katello_client::config':} ->
+  class{'katello_client::config':} ~>
+  class{'katello_client::service':} ->
   class{'katello_client::subscription':} ->
   anchor {'katello_client::end':}
-
 }
-
