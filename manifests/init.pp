@@ -66,20 +66,25 @@
 #   The (optional) SSL client certificate.  PEM encoded and contains both key and certificate.
 #   Default: '/etc/pki/consumer/bundle.pem'
 #
-class katello_client ($version          = latest,
-                      $subman_version   = latest,
-                      $katello_host     = undef,
-                      $content_org      = undef,
-                      $environment      = undef,
-                      $activationkey    = [],
-                      $agent_install    = true,
-                      $subman_install   = true,
-                      $username         = undef,
-                      $password         = undef,
-                      $manage_repo      = true,
-                      $ensure           = present,
-                      $cacert           = '/etc/rhsm/ca/candlepin-local.pem',
-                      $clientcert       = '/etc/pki/consumer/bundle.pem',
+# [*sub_manager_repo_name*]
+#   The name of the sub-manager yum repo, in case wanting to customize names.
+#   Default: 'sub-manager'
+#
+class katello_client ($version               = latest,
+                      $subman_version        = latest,
+                      $katello_host          = undef,
+                      $content_org           = undef,
+                      $environment           = undef,
+                      $activationkey         = [],
+                      $agent_install         = true,
+                      $subman_install        = true,
+                      $username              = undef,
+                      $password              = undef,
+                      $manage_repo           = true,
+                      $ensure                = present,
+                      $cacert                = '/etc/rhsm/ca/candlepin-local.pem',
+                      $clientcert            = '/etc/pki/consumer/bundle.pem',
+                      $sub_manager_repo_name = 'sub-manager',
                       ){
   validate_bool($agent_install,)
   validate_bool($subman_install,)

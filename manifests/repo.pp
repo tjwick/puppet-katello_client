@@ -4,7 +4,7 @@ class katello_client::repo {
   case $::osfamily {
     'RedHat', 'Linux' : {
       if $katello_client::manage_repo {
-        yumrepo { 'sub-manager':
+        yumrepo { $katello_client::sub_manager_repo_name:
           descr    => 'An open source entitlement management system',
           baseurl  => "http://repos.fedorapeople.org/repos/candlepin/subscription-manager/epel-${::operatingsystemmajrelease}/${::architecture}/",
           enabled  => 1,
@@ -18,7 +18,7 @@ class katello_client::repo {
             enabled  => 1,
             gpgkey   => 'http://www.katello.org/gpg/RPM-GPG-KEY-katello-2012.gpg',
             gpgcheck => 1,
-            require  => Yumrepo['sub-manager'],
+            require  => Yumrepo[$katello_client::sub_manager_repo_name],
           }
         }
       }
