@@ -85,6 +85,7 @@ class katello_client ($version               = latest,
                       $cacert                = '/etc/rhsm/ca/candlepin-local.pem',
                       $clientcert            = '/etc/pki/consumer/bundle.pem',
                       $sub_manager_repo_name = 'sub-manager',
+                      $bootstrap_rpm         = true,
                       ){
   validate_bool($agent_install,)
   validate_bool($subman_install,)

@@ -3,18 +3,20 @@ class katello_client::subscription {
  if $katello_client::subman_install {
   case $::osfamily {
     'RedHat', 'Linux' : {
-      if $katello_client::manage_repo {
-        exec { 'bootstrap':
-          command => "/bin/rpm -Uvh http://${katello_client::katello_host}/pub/katello-ca-consumer-latest.noarch.rpm",
-          creates => '/etc/rhsm/ca/katello-server-ca.pem',
-          require => Yumrepo[$katello_client::sub_manager_repo_name],
-          before  => Rhsm_register['katello'],
-        }
-      } else {
-        exec { 'bootstrap':
-          command => "/bin/rpm -Uvh http://${katello_client::katello_host}/pub/katello-ca-consumer-latest.noarch.rpm",
-          creates => '/etc/rhsm/ca/katello-server-ca.pem',
-          before  => Rhsm_register['katello'],
+      if $katello_client::bootstrap_rpm {
+        if $katello_client::manage_repo {
+          exec { 'bootstrap':
+            command => "/bin/rpm -Uvh http://${katello_client::katello_host}/pub/katello-ca-consumer-latest.noarch.rpm",
+            creates => '/etc/rhsm/ca/katello-server-ca.pem',
+            require => Yumrepo[$katello_client::sub_manager_repo_name],
+            before  => Rhsm_register['katello'],
+          }
+        } else {
+          exec { 'bootstrap':
+            command => "/bin/rpm -Uvh http://${katello_client::katello_host}/pub/katello-ca-consumer-latest.noarch.rpm",
+            creates => '/etc/rhsm/ca/katello-server-ca.pem',
+            before  => Rhsm_register['katello'],
+          }
         }
       }
 
